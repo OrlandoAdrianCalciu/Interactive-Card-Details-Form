@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+  
+  <title>Interactive card details form</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet ðŸ‘ -->
+  
+</head>
+<body>
+    <header id="parent">
+        <img src="images/bg-main-mobile.png" alt="background-image" id="mobile-bg">
+        <!-- <img src="images/bg-main-desktop.png" alt="background-image" class="desktop-bg"> -->
+        <div class="first-card">
+        <img src="images/bg-card-back.png" alt="card-back" class="card-back">
+        <span class="cvc-card">000</span>
+    </div>
+    <div class="second-card">
+        <img src="images/bg-card-front.png" alt="card-front" class="card-front">
+        <span class="card-number">0000 0000 0000 0000</span>
+        <span class="card-name">Jane Appleseed</span>
+        <span class="exp-date">00/00</span>
+    </div>
+        <div>
+                <span class="first-circle"></span>
+            </div>
+            <div>
+                <span class="second-circle"></span>
+            </div>
+    </header>
+    <main id="form">
+        <span>CARDHOLDER NAME</span>
+        <input type="text" id="name" name="name" required placeholder="e.g. Jane Appleseed">
+        <span>CARD NUMBER</span>
+        <input type="number" id="number" name="number" required
+        min="16" max="16" placeholder="e.g. 1234 5678 9123 0000">
+        
+        <span>EXP. DATE (MM/YY)</span>
+        <span class="cvc">CVC</span>
+        <br>
+        <input type="number" id="mini-form1" name="date" required placeholder="MM / YY" min="2" max="2" maxlength="4" >
+        <input type="number" id="mini-form" name="cvc" required placeholder="e.g. 123" >
+    </main>
+    <footer>
+        <input type="button" value="Confirm">
+    </footer>
+<!-- 
+  0000 0000 0000 0000
+  Jane Appleseed
+  00/00
+
+  000
+
+  Cardholder Name
+  e.g. Jane Appleseed
+
+  Card Number
+  e.g. 1234 5678 9123 0000
+
+  Exp. Date (MM/YY)
+  MM
+  YY
+
+  CVC
+  e.g. 123
+
+  Confirm -->
+
+  <!-- Completed state start -->
+
+  <!-- Thank you!
+  We've added your card details
+  Continue
+   -->
+  <!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+</body>
+</html>
