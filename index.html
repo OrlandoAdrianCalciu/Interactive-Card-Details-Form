@@ -1,88 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
-  
-  <title>Interactive card details form</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet ðŸ‘ -->
-  
+    <title>Interactive card details form</title>
+
 </head>
+
 <body>
     <header id="parent">
         <img src="images/bg-main-mobile.png" alt="background-image" id="mobile-bg">
-        <!-- <img src="images/bg-main-desktop.png" alt="background-image" class="desktop-bg"> -->
+        <img src="images/bg-main-desktop.png" alt="background-image" class="desktop-bg">
         <div class="first-card">
-        <img src="images/bg-card-back.png" alt="card-back" class="card-back">
-        <span class="cvc-card">000</span>
-    </div>
-    <div class="second-card">
-        <img src="images/bg-card-front.png" alt="card-front" class="card-front">
-        <span class="card-number">0000 0000 0000 0000</span>
-        <span class="card-name">Jane Appleseed</span>
-        <span class="exp-date">00/00</span>
-    </div>
+            <img src="images/bg-card-back.png" alt="card-back" class="card-back">
+            <span class="cvc-card">000</span>
+        </div>
+        <div class="second-card">
+            <img src="images/bg-card-front.png" alt="card-front" class="card-front">
+            <span class="card-number">0000 0000 0000 0000</span>
+            <span class="card-name">Jane Appleseed</span>
+            <span class="exp-date">00/00</span>
+        </div>
         <div>
-                <span class="first-circle"></span>
-            </div>
-            <div>
-                <span class="second-circle"></span>
-            </div>
+            <span class="first-circle"></span>
+        </div>
+        <div>
+            <span class="second-circle"></span>
+        </div>
     </header>
-    <main id="form">
+    <main>
+        <form id="form" onsubmit="return creditForm()">
         <span>CARDHOLDER NAME</span>
-        <input type="text" id="name" name="name" required placeholder="e.g. Jane Appleseed">
-        <span>CARD NUMBER</span>
-        <input type="number" id="number" name="number" required
-        min="16" max="16" placeholder="e.g. 1234 5678 9123 0000">
-        
-        <span>EXP. DATE (MM/YY)</span>
-        <span class="cvc">CVC</span>
+        <input type="text" id="name" name="name" required placeholder="e.g. Jane Appleseed"
+            onkeyup="cardholder_name_keyup()">
+        <p id="error-msg-for-cardholder-name" class="error-message">This is a required field</p>
         <br>
-        <input type="number" id="mini-form1" name="date" required placeholder="MM / YY" min="2" max="2" maxlength="4" >
-        <input type="number" id="mini-form" name="cvc" required placeholder="e.g. 123" >
+        <span>CARD NUMBER</span>
+        <input type="text" id="number" name="number" required maxlength="16" placeholder="e.g. 1234 5678 9123 0000"
+            onkeyup="card_number_keyup()">
+        <p id="error-msg-for-card-number" class="error-message">Wrong format, numbers only</p>
+        <br>
+        <div class="card-expiring-date-cvc">
+            <div class="card-expiring-date">
+                <span>EXP. DATE (MM/YY)</span>
+                <div class="month-and-year">
+                    <input type="text" name="date" id="month" required placeholder="MM" maxlength="2"  onkeyup="month_keyup()">
+                    <input type="text" name="date" id="year" required placeholder="YY" maxlength="2" onkeyup="year_keyup()">
+                </div>
+                <p id="error-msg-for-card-exp-date" class="error-message">Can't be blank</p>
+            </div>
+            <div class="card-verification-code">
+                <span class="cvc">CVC</span>
+                <br>
+                <input type="text" id="cvc" name="cvc" required placeholder="e.g. 123" maxlength="3" onkeyup="cvc_keyup()">
+                <p id="error-msg-for-cvc" class="error-message">Can't be blank</p>
+            </div>
+        </div>
+        <div>
+            <input type="submit" class="button" value="Confirm">
+        </div>
+    </form>
+        <div class="thankyou">
+            <object data="images/icon-complete.svg"></object>
+            <h1>Thank you!</h1>
+            <span>We've added your card details</span>
+            <input type="submit" class="button" value="Continue" onclick="move_to_next_form()">
+        </div>
     </main>
-    <footer>
-        <input type="button" value="Confirm">
-    </footer>
-<!-- 
-  0000 0000 0000 0000
-  Jane Appleseed
-  00/00
 
-  000
 
-  Cardholder Name
-  e.g. Jane Appleseed
-
-  Card Number
-  e.g. 1234 5678 9123 0000
-
-  Exp. Date (MM/YY)
-  MM
-  YY
-
-  CVC
-  e.g. 123
-
-  Confirm -->
-
-  <!-- Completed state start -->
-
-  <!-- Thank you!
-  We've added your card details
-  Continue
-   -->
-  <!-- <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div> -->
+    <script src="scripts.js"></script>
 </body>
+
 </html>
