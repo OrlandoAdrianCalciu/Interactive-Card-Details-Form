@@ -21,13 +21,17 @@
         <img src="images/bg-main-desktop.png" alt="background-image" class="desktop-bg">
         <div class="first-card">
             <img src="images/bg-card-back.png" alt="card-back" class="card-back">
-            <span class="cvc-card">000</span>
+            <span id="card-verification-code" class="cvc-card">000</span>
         </div>
         <div class="second-card">
             <img src="images/bg-card-front.png" alt="card-front" class="card-front">
-            <span class="card-number">0000 0000 0000 0000</span>
-            <span class="card-name">Jane Appleseed</span>
-            <span class="exp-date">00/00</span>
+            <span id="card_number" class="card_number">0000 0000 0000 0000</span>
+            <span id="cardholder_name" class="cardholder_name">Jane Appleseed</span>
+            <div class="card-exp-date">
+                <p id="exp-month" class="month">00</p>
+                <p>/</p>
+                <p id="exp-year" class="year">00</p>
+            </div>
         </div>
         <div>
             <span class="first-circle"></span>
@@ -38,42 +42,45 @@
     </header>
     <main>
         <form id="form" onsubmit="return creditForm()">
-        <span>CARDHOLDER NAME</span>
-        <input type="text" id="name" name="name" required placeholder="e.g. Jane Appleseed"
-            onkeyup="cardholder_name_keyup()">
-        <p id="error-msg-for-cardholder-name" class="error-message">This is a required field</p>
-        <br>
-        <span>CARD NUMBER</span>
-        <input type="text" id="number" name="number" required maxlength="16" placeholder="e.g. 1234 5678 9123 0000"
-            onkeyup="card_number_keyup()">
-        <p id="error-msg-for-card-number" class="error-message">Wrong format, numbers only</p>
-        <br>
-        <div class="card-expiring-date-cvc">
-            <div class="card-expiring-date">
-                <span>EXP. DATE (MM/YY)</span>
-                <div class="month-and-year">
-                    <input type="text" name="date" id="month" required placeholder="MM" maxlength="2"  onkeyup="month_keyup()">
-                    <input type="text" name="date" id="year" required placeholder="YY" maxlength="2" onkeyup="year_keyup()">
+            <span>CARDHOLDER NAME</span>
+            <input type="text" id="cardholder-name" name="cardholder-name" required placeholder="e.g. Jane Appleseed"
+                onkeyup="cardholder_name_keyup()">
+            <p id="error-msg-for-cardholder-name" class="error-message">This is a required field</p>
+            <br>
+            <span>CARD NUMBER</span>
+            <input type="text" id="card-number" name="card-number" required maxlength="20"
+                placeholder="e.g. 1234 5678 9123 0000" onkeyup="card_number_keyup()">
+            <p id="error-msg-for-card-number" class="error-message">Wrong format, numbers only</p>
+            <br>
+            <div class="card-expiring-date-cvc">
+                <div class="card-expiring-date">
+                    <span>EXP. DATE (MM/YY)</span>
+                    <div class="month-and-year">
+                        <input type="text" name="date" id="month" required placeholder="MM" maxlength="2"
+                            onkeyup="month_keyup()">
+                        <input type="text" name="date" id="year" required placeholder="YY" maxlength="2"
+                            onkeyup="year_keyup()">
+                    </div>
+                    <p id="error-msg-for-card-exp-date" class="error-message">Can't be blank</p>
                 </div>
-                <p id="error-msg-for-card-exp-date" class="error-message">Can't be blank</p>
+                <div class="card-verification-code">
+                    <span class="cvc">CVC</span>
+                    <br>
+                    <input type="text" id="cvc" name="cvc" required placeholder="e.g. 123" maxlength="3"
+                        onkeyup="cvc_keyup()">
+                    <p id="error-msg-for-cvc" class="error-message">Can't be blank</p>
+                </div>
             </div>
-            <div class="card-verification-code">
-                <span class="cvc">CVC</span>
-                <br>
-                <input type="text" id="cvc" name="cvc" required placeholder="e.g. 123" maxlength="3" onkeyup="cvc_keyup()">
-                <p id="error-msg-for-cvc" class="error-message">Can't be blank</p>
+            <div>
+                <input type="submit" class="button" value="Confirm">
             </div>
-        </div>
-        <div>
-            <input type="submit" class="button" value="Confirm">
-        </div>
-    </form>
-        <div class="thankyou">
-            <object data="images/icon-complete.svg"></object>
+        </form>
+        <section id="completed-state" class="thankyou">
+            <img src="images/icon-complete.svg" alt="complete" class="complete">
             <h1>Thank you!</h1>
             <span>We've added your card details</span>
-            <input type="submit" class="button" value="Continue" onclick="move_to_next_form()">
-        </div>
+            <button onclick="move_to_next_form()" id="continue" class="continue">Continue</button>
+        </section>
     </main>
 
 
